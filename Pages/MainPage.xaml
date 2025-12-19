@@ -155,7 +155,7 @@ Mode="SecondaryMid">
 <Run Text="Цена:"/>
 <Run Text="{Binding Price}"/>
                                     </TextBlock>
-                                    <TextBlock HorizontalAlignment="Right">
+                                    <TextBlock HorizontalAlignment="Right" Margin="0,38,0,0">
 <Run Text="Остаток:"/>
 <Run Text="{Binding Stock}"/>
                                     </TextBlock>

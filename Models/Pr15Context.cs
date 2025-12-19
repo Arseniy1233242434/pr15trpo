@@ -25,7 +25,7 @@ public partial class Pr15Context : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
-        => optionsBuilder.UseSqlServer("Server=WIN-R0FOFS4V1GK\\FUTFGT7U;Database=pr15;Trusted_Connection=true;TrustServerCertificate=true");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-60C99SS\\SQLEXPRESS;Database=pr15;Trusted_Connection=true;TrustServerCertificate=true");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
