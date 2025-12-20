@@ -8,7 +8,7 @@
       DataContext="{Binding RelativeSource={RelativeSource Self}}"
       mc:Ignorable="d" 
       d:DesignHeight="500" d:DesignWidth="800"
-      Title="MainPage" >
+      Title="MainPage"  >
     <Page.Resources>
 
         <local:LowStockConverter x:Key="g2"/>
@@ -26,17 +26,17 @@
 
 
         <StackPanel Orientation="Horizontal" x:Name="ControlPanel" Grid.Row="1">
-           
 
-                
-            
-            <Button Click="Button_Click_1" >Добавить</Button>
 
-            <Button Click="remove" >Удалить</Button>
-            <Button Click="Button_Click_2" >Брэнды</Button>
-            <Button Click="Button_Click_3" >Категории</Button>
-            <Button Click="Button_Click_4" >Тэги</Button>
-            <Button Click="Button_Click_5" >Добавить тэги</Button>
+            <Button Click="Button_Click_6" >Назад</Button>
+
+            <Button Click="Button_Click_1" x:Name="b1">Добавить</Button>
+
+            <Button Click="remove" x:Name="b2">Удалить</Button>
+            <Button Click="Button_Click_2" x:Name="b3">Брэнды</Button>
+            <Button Click="Button_Click_3" x:Name="b4">Категории</Button>
+            <Button Click="Button_Click_4" x:Name="b5">Тэги</Button>
+            <Button Click="Button_Click_5" x:Name="b6">Добавить тэги</Button>
             
         </StackPanel>
 
@@ -97,7 +97,7 @@ UpdateSourceTrigger=PropertyChanged}" materialDesign:HintAssist.Hint="Введи
         </StackPanel>
         <materialDesign:ColorZone Grid.Row="1" Grid.Column="1"
 Mode="SecondaryMid">
-                <ListView HorizontalContentAlignment="Stretch" ItemsSource="{Binding forms}" Name="FormsList" SelectedItem="{Binding Product1}" MouseDoubleClick="FormsList_MouseDoubleClick">
+                <ListView HorizontalContentAlignment="Stretch" ItemsSource="{Binding forms}" Name="FormsList" SelectedItem="{Binding Product1}"  >
                 <ListView.ItemTemplate>
                     <DataTemplate>
 

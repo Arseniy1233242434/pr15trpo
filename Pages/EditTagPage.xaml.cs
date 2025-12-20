@@ -24,6 +24,7 @@ namespace pr15.Pages
     public partial class EditTagPage : Page
     {
         public static Tag _group = new();
+        public static Tag _group1 = new();
         public TagService service { get; set; } = new();
         bool IsEdit = false;
         public EditTagPage(Tag? group = null)
@@ -31,7 +32,9 @@ namespace pr15.Pages
             InitializeComponent();
             if (group != null)
             {
-                _group = group;
+                _group1 = group;
+
+                _group.Name = group.Name;
                 IsEdit = true;
                 DataContext = _group;
 
@@ -43,8 +46,16 @@ namespace pr15.Pages
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Validation.GetHasError(t1) || t1.Text == "")
+            {
+                MessageBox.Show("Корректно заполните все поля!");
+                return;
+            }
             if (IsEdit)
+            {
+                _group1.Name =_group.Name;
                 service.Commit();
+            }
             else
                 service.Add(_group);
 

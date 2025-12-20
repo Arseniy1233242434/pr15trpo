@@ -24,16 +24,36 @@ namespace pr15.Pages
     public partial class ProductPage : Page
     {
         public static Product _student { get; set; } = new();
-        public CategoryService categoryService { get; set; } = new CategoryService();
-        public BrandService brandService { get; set; } = new BrandService();
-        bool isEdit = false;
+        public static Product _student1 { get; set; } = null;
+
+        public CategoryService categoryService { get; set; } = null;
+        public BrandService brandService { get; set; } = null;
         public ProductService service = new ProductService();
-        public ProductPage(Product? _edituser = null)
+        bool isEdit = false;
+        
+        public ProductPage(BrandService a1, CategoryService a2,Product? _edituser = null)
         {
+            categoryService = a2;
+            brandService = a1;  
             InitializeComponent();
             if (_edituser != null)
             {
-                _student = _edituser;
+                _student1 = _edituser;
+                _student.Id = _edituser.Id;
+                _student.Name = _edituser.Name;
+                _student.Rating = _edituser.Rating;
+                _student.Description = _edituser.Description;    
+                _student.Category = _edituser.Category;
+                _student.Brand = _edituser.Brand;
+                _student.Name = _edituser. Name;
+                _student.Stock = _edituser.Stock;   
+                _student.BrandId = _edituser.BrandId;
+                _student.CategoryId = _edituser.CategoryId;
+                _student.CreatedAt = _edituser.CreatedAt;
+                _student.Price = _edituser.Price;
+                _student.Tags = _edituser.Tags;
+
+              //  _student = _edituser;
                 isEdit = true;
                
                
@@ -45,8 +65,30 @@ namespace pr15.Pages
         }
         private void save(object sender, RoutedEventArgs e)
         {
+            if (Validation.GetHasError(email)|| Validation.GetHasError(password1)|| Validation.GetHasError(password)||c1.SelectedItem==null||c2.SelectedItem==null||t2.Text==""||login.Text==""||email.Text==""||password.Text==""||password1.Text=="")
+            {
+                MessageBox.Show("Корректно заполните все поля!");
+                return;
+            }
             if (isEdit)
+            {
+               
+               
+                _student1.Name = _student.Name;
+                _student1.Rating = _student.Rating;
+                _student1.Description = _student.Description;
+                _student1.Category = _student.Category;
+                _student1.Brand = _student.Brand;
+                _student1.Name = _student.Name;
+                _student1.Stock = _student.Stock;
+                _student1.BrandId = _student.BrandId;
+                _student1.CategoryId = _student.CategoryId;
+                _student1.CreatedAt = _student.CreatedAt;
+                _student1.Price = _student.Price;
+                _student1.Tags = _student.Tags;
                 service.Commit();
+                
+            }
             else
                 service.Add(_student);
             NavigationService.GoBack();

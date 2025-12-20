@@ -27,13 +27,14 @@ namespace pr15.Service
             };
             _db.Add<Category>(_user);
             Commit();
-            Users.Add(user);
+          // Users.Add(user);
             GetAll();
         }
         public int Commit() => _db.SaveChanges();
         public void GetAll()
         {
-            var users = _db.Categories
+          
+            var users = _db.Categories.Include(s => s.Products)
 .ToList();
             Users.Clear();
             foreach (var user in users)

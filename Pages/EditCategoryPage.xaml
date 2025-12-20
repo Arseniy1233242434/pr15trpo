@@ -17,7 +17,7 @@
             <StackPanel>
                 <Label FontSize="16">Страница редактирования категорий</Label>
                 <Label>Название категории</Label>
-                <TextBox >
+                <TextBox x:Name="t1" >
                     <Binding Path="Name"  UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <local:IsTitleCorrect2/>

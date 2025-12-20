@@ -30,7 +30,7 @@
                 <Label>Тэг</Label>
                 <ComboBox 
                           DisplayMemberPath="Name" 
-SelectedItem="{Binding current1}" ItemsSource="{Binding service.Users}"/>
+SelectedItem="{Binding current1}" ItemsSource="{Binding service.Users}" x:Name="c1"/>
 
                 
                 

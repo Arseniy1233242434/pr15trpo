@@ -17,10 +17,10 @@
             <Label FontSize="16">Страница редактирования тэгов </Label>
             <StackPanel>
                 <Label>Название тэга</Label>
-                <TextBox >
+                <TextBox x:Name="t1">
                     <Binding Path="Name"  UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
-                            <local:IsTitleCorrect/>
+                            <local:IsTitleCorrect3/>
                         </Binding.ValidationRules>
                     </Binding>
 

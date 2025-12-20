@@ -46,6 +46,7 @@ namespace pr15.Pages
             MessageBoxButton.YesNo) == MessageBoxResult.Yes)
             {
                 group.Tags.Remove(current);
+                service1.Commit();
             }
         }
 
@@ -56,6 +57,11 @@ namespace pr15.Pages
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
+            if (c1.SelectedItem==null)
+            {
+                MessageBox.Show("Выберите тэг!");
+                return;
+            }
             if (group.Tags.Contains(current1)) 
             {
                 MessageBox.Show("Такой тэг уже есть!");

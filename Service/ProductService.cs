@@ -40,10 +40,11 @@ namespace pr15.Service
         public int Commit() => _db.SaveChanges();
         public void GetAll()
         {
+            Users.Clear();
             var users = _db.Products.Include(s => s.Category)
 .Include(s => s.Brand).Include(d=>d.Tags)
 .ToList();
-            Users.Clear();
+            
             foreach (var user in users)
             {
                 

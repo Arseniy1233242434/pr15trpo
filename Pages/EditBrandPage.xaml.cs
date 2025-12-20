@@ -24,17 +24,22 @@ namespace pr15.Pages
     public partial class EditBrandPage : Page
     {
         public static Brand _group = new();
-        public  BrandService service { get; set; } = new();
+        public static Brand _group1 = new();
+        public BrandService service { get; set; } = new();
         bool IsEdit = false;
         public EditBrandPage(Brand? group = null)
         {
             InitializeComponent();
             if (group != null)
             {
-                _group = group;
+                _group1 = group;
+
+                _group.Products = group.Products;
+                _group.Name = group.Name;
+
                 IsEdit = true;
                 DataContext = _group;
-                
+
                 return;
             }
 
@@ -43,8 +48,16 @@ namespace pr15.Pages
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            if (Validation.GetHasError(t1)||t1.Text=="")
+            {
+                MessageBox.Show("Корректно заполните все поля!");
+                return;
+            }
             if (IsEdit)
+            {
+                _group1.Name =_group.Name;
                 service.Commit();
+            }
             else
                 service.Add(_group);
 

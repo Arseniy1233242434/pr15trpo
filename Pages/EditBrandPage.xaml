@@ -17,7 +17,7 @@
             <StackPanel>
                 <Label FontSize="16">Страница редактирования брэндов</Label>
                 <Label>Название брэнда</Label>
-                <TextBox >
+                <TextBox x:Name="t1">
                     <Binding Path="Name"  UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <local:IsTitleCorrect/>

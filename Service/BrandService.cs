@@ -1,4 +1,5 @@
-﻿using pr15.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using pr15.Models;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -26,13 +27,14 @@ namespace pr15.Service
             };
             _db.Add<Brand>(_user);
             Commit();
-            Users.Add(user);
+           // Users.Add(user);
             GetAll();
         }
         public int Commit() => _db.SaveChanges();
         public void GetAll()
         {
-            var users = _db.Brands
+            
+            var users = _db.Brands.Include(s => s.Products)
 .ToList();
             Users.Clear();
             foreach (var user in users)

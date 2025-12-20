@@ -16,7 +16,7 @@
             <Label  FontSize="16">Страница добавления товаров</Label>
             <StackPanel>
                 <Label>Название</Label>
-                <TextBox x:Name="login">
+                <TextBox x:Name="login" >
                     <Binding Path="_student.Name"  >
                         <Binding.ValidationRules>
                            
@@ -41,12 +41,12 @@ ItemsSource="{Binding ElementName=login, Path=
             </StackPanel>
             <StackPanel>
                 <Label>Описание</Label>
-                <TextBox Text="{Binding _student.Description}"/>
+                <TextBox Text="{Binding _student.Description}" x:Name="t2"/>
             </StackPanel>
             <StackPanel>
                 <Label>Цена</Label>
                 <TextBox  x:Name="email">
-                    <Binding Path="_student.Price" >
+                    <Binding Path="_student.Price" UpdateSourceTrigger="PropertyChanged" >
                         <Binding.ValidationRules>
                             <local:IsPriceCorrect></local:IsPriceCorrect>
                         </Binding.ValidationRules>
@@ -66,7 +66,7 @@ ItemsSource="{Binding ElementName=email, Path=
             <StackPanel>
                 <Label>Остаток</Label>
                 <TextBox x:Name="password">
-                    <Binding Path="_student.Stock"  >
+                    <Binding Path="_student.Stock"  UpdateSourceTrigger="PropertyChanged">
                         <Binding.ValidationRules>
                             <local:IsStockCorrect></local:IsStockCorrect>
                         </Binding.ValidationRules>
@@ -87,22 +87,13 @@ ItemsSource="{Binding ElementName=password, Path=
             <StackPanel>
                 <Label>Рейтинг</Label>
                 <TextBox x:Name="password1">
-                    <Binding Path="_student.Rating"  >
+                    <Binding Path="_student.Rating" UpdateSourceTrigger="PropertyChanged" >
                         <Binding.ValidationRules>
-
+                            <local:IsRatingCorrect></local:IsRatingCorrect>
                         </Binding.ValidationRules>
                     </Binding>
                 </TextBox>
-                <ItemsControl  Grid.Row="4" 
-FontSize="12"
-ItemsSource="{Binding ElementName=password, Path=
-(Validation.Errors)}">
-                    <ItemsControl.ItemTemplate >
-                        <DataTemplate>
-                            <TextBlock Text="{Binding ErrorContent}" TextWrapping="Wrap"  />
-                        </DataTemplate>
-                    </ItemsControl.ItemTemplate>
-                </ItemsControl>
+                
             </StackPanel>
 
 
@@ -136,14 +127,14 @@ ItemsSource="{Binding ElementName=date, Path=
                 <Label>Категория</Label>
                 <ComboBox 
                           DisplayMemberPath="Name" 
-SelectedItem="{Binding _student.Category}" ItemsSource="{Binding categoryService.Users}"/>
+SelectedItem="{Binding _student.Category}" ItemsSource="{Binding categoryService.Users}" x:Name="c1"/>
 
             </StackPanel>
             <StackPanel>
                 <Label>Брэнд</Label>
                 <ComboBox 
                           DisplayMemberPath="Name" 
-SelectedItem="{Binding _student.Brand}" ItemsSource="{Binding brandService.Users}"/>
+SelectedItem="{Binding _student.Brand}" ItemsSource="{Binding brandService.Users}" x:Name="c2"/>
 
             </StackPanel>
 

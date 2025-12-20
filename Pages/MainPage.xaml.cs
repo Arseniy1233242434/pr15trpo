@@ -48,9 +48,22 @@ namespace pr15.Pages
             formsView = CollectionViewSource.GetDefaultView(forms);
             formsView.Filter = FilterForms;
             if (!role)
-            ControlPanel.Visibility=Visibility.Collapsed;
-            
+            {
+                b1.Visibility = Visibility.Collapsed;
+                b2.Visibility = Visibility.Collapsed;
+                b3.Visibility = Visibility.Collapsed;
+                b4.Visibility = Visibility.Collapsed;
+                b5.Visibility = Visibility.Collapsed;
+                b6.Visibility = Visibility.Collapsed;
+               
+            }
+            else
+                FormsList.MouseDoubleClick += FormsList_MouseDoubleClick;
+
+            Loaded += LoadList;
+
         }
+        
         public void LoadList(object sender, EventArgs e)
         {
             forms.Clear();
@@ -81,7 +94,7 @@ StringComparison.CurrentCultureIgnoreCase))
             if (!filterHeightTo.IsNullOrEmpty() && Convert.ToInt32(filterHeightTo) <
             form.Price)
                 return false;
-            if(filterCategory!=null && form.Category.Name!=filterCategory.Name)
+            if(filterCategory != null && (form.Category == null || form.Category.Name != filterCategory.Name))
                 return false;          
             if(filterBrand != null && (form.Brand == null||form.Brand.Name != filterBrand.Name))
                 return false;
@@ -150,12 +163,17 @@ SelectionChangedEventArgs e)
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new ProductPage());
+            NavigationService.Navigate(new ProductPage(brandService,categoryService));
         }
 
         private void FormsList_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            NavigationService.Navigate(new ProductPage(Product1));
+            if (Product1 == null)
+            {
+                return;
+            }
+
+            NavigationService.Navigate(new ProductPage(brandService, categoryService,Product1));
         }
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
@@ -182,6 +200,11 @@ SelectionChangedEventArgs e)
             }
             NavigationService.Navigate(new AddTagToProductPage(Product1));
 
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            NavigationService.GoBack();
         }
     }
     public class LowStockConverter : IValueConverter
