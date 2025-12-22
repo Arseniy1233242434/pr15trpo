@@ -15,13 +15,9 @@
 
             <StackPanel>
                 <Label>Пароль</Label>
-                <TextBox x:Name="password">
-                    <Binding Path="s"  >
-                        <Binding.ValidationRules>
-                            
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox>
+                <PasswordBox x:Name="password" >
+                   
+                </PasswordBox>
                 <ItemsControl  Grid.Row="4" 
 FontSize="12"
 ItemsSource="{Binding ElementName=password, Path=

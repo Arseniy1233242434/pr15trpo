@@ -30,7 +30,7 @@ namespace pr15.Pages
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(s=="1234")
+            if(password.Password=="1234")
             {
                 NavigationService.Navigate(new MainPage(true));
             }

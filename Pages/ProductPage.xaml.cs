@@ -138,7 +138,12 @@ namespace pr15.Pages
             {
                 return new ValidationResult(false, "Неправильный формат цены!");
             }
-                return ValidationResult.ValidResult;
+            if (h.ToString().Split('.').Length > 1 && h.ToString().Split('.')[1].Length > 2)
+            {
+
+                return new ValidationResult(false, "Не больше двух знаков после .!");
+            }
+            return ValidationResult.ValidResult;
         }
     }
     public class IsStockCorrect : ValidationRule
@@ -165,20 +170,59 @@ namespace pr15.Pages
         public override ValidationResult Validate(object value, CultureInfo
         cultureInfo)
         {
-            string h = (string)value;
+            string h = value.ToString();
 
             
 
             if (!decimal.TryParse(h, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal a))
             {
-                string modified = h.Replace(',', '.');
+
                 if (!decimal.TryParse(h, NumberStyles.Any, CultureInfo.InvariantCulture, out decimal a1))
                     return new ValidationResult(false, "Неправильный формат рейтинга!");
             }
-            if (a <= 0||a>5)
+            if (a <= 0 || a > 5)
             {
                 return new ValidationResult(false, "Рейтиг должен быть от 1 до 5 не больше одного знака после .!");
             }
+
+
+            if (h.ToString().Split('.').Length > 1 && h.ToString().Split('.')[1].Length > 1)
+            {
+
+                return new ValidationResult(false, "Рейтиг должен быть от 1 до 5 не больше одного знака после .!");
+            }
+            //int count=0;
+            //int count1=0;
+            //int dot = 0;
+            //bool d = false;
+            //for (int i = 0; i < h1.Length; i++)
+            //{
+            //    if (char.IsNumber(h1[i]))
+            //    {
+            //        if(d==true)
+            //        {
+            //            count1++;
+            //            continue;
+            //        }
+            //        else
+            //        {
+            //            count++;
+            //            continue;
+            //        }
+            //    }
+            //    if (h1[i] == '.' || h1[i] == ',')
+            //    {
+            //        dot++;
+            //        d = true;
+            //    }
+            //    else
+            //    {
+            //        return new ValidationResult(false, "Неправильный формат рейтинга!");
+            //    }
+            //}
+            //if (dot > 1||count>1||count1>1)
+            //    return new ValidationResult(false, "Рейтиг должен быть от 1 до 5 не больше одного знака после .!");
+
             return ValidationResult.ValidResult;
         }
     }

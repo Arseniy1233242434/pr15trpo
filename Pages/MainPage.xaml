@@ -151,9 +151,9 @@ Mode="SecondaryMid">
                                     </TextBlock>
                                 </StackPanel>
                                 <StackPanel Grid.Column="1">
-                                    <TextBlock HorizontalAlignment="Right">
+                                    <TextBlock HorizontalAlignment="Right" >
 <Run Text="Цена:"/>
-<Run Text="{Binding Price}"/>
+<Run Text="{Binding Price, StringFormat={}{0:F2}}"/>
                                     </TextBlock>
                                     <TextBlock HorizontalAlignment="Right" Margin="0,38,0,0">
 <Run Text="Остаток:"/>
