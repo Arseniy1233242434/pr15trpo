@@ -66,7 +66,7 @@ ItemsSource="{Binding ElementName=email, Path=
             <StackPanel>
                 <Label>Остаток</Label>
                 <TextBox x:Name="password">
-                    <Binding Path="_student.Stock"  >
+                    <Binding Path="_student.Stock">
                         <Binding.ValidationRules>
                             <local:IsStockCorrect></local:IsStockCorrect>
                         </Binding.ValidationRules>

@@ -127,6 +127,14 @@ SelectionChangedEventArgs e)
                     formsView.SortDescriptions.Add(new SortDescription("Stock",
                     ListSortDirection.Ascending));
                     break;
+                case "Stock1":
+                    formsView.SortDescriptions.Add(new SortDescription("Stock",
+                    ListSortDirection.Descending));
+                    break;
+                case "Price1":
+                    formsView.SortDescriptions.Add(new SortDescription("Price",
+                    ListSortDirection.Descending));
+                    break;
             }
             formsView.Refresh();
         }
