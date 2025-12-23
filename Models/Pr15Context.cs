@@ -76,7 +76,7 @@ public partial class Pr15Context : DbContext
                     "ProductTag",
                     r => r.HasOne<Tag>().WithMany()
                         .HasForeignKey("TagId")
-                        .OnDelete(DeleteBehavior.ClientSetNull)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .HasConstraintName("FK_product_tags_tags"),
                     l => l.HasOne<Product>().WithMany()
                         .HasForeignKey("ProductId")
